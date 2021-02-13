@@ -11,13 +11,7 @@ import { useState, useRef } from 'react';
 
 firebase.initializeApp({
   // Initialize firebase app
-  apiKey: "AIzaSyBNSFH0ij8jiiFjPrP_oZMwNAkdYKdSMlM",
-  authDomain: "focuschat-ff641.firebaseapp.com",
-  projectId: "focuschat-ff641",
-  storageBucket: "focuschat-ff641.appspot.com",
-  messagingSenderId: "253759282896",
-  appId: "1:253759282896:web:989ca9a53a1cbd3b8008d5",
-  measurementId: "G-FF3EKKPZEX"
+  // Your firebase info
 })
 
 // Create references for Auth and Firestore SDKs
