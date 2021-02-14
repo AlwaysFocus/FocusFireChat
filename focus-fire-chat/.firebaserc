@@ -1,5 +1,6 @@
 {
   "projects": {
-    "focuschat": "focuschat-ff641"
+    "focuschat": "focuschat-ff641",
+    "default": "focuschat-ff641"
   }
 }

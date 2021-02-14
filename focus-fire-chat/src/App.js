@@ -11,7 +11,13 @@ import { useState, useRef } from 'react';
 
 firebase.initializeApp({
   // Initialize firebase app
-  // Your firebase info
+  apiKey: "AIzaSyBNSFH0ij8jiiFjPrP_oZMwNAkdYKdSMlM",
+  authDomain: "focuschat-ff641.firebaseapp.com",
+  projectId: "focuschat-ff641",
+  storageBucket: "focuschat-ff641.appspot.com",
+  messagingSenderId: "253759282896",
+  appId: "1:253759282896:web:989ca9a53a1cbd3b8008d5",
+  measurementId: "G-FF3EKKPZEX"
 })
 
 // Create references for Auth and Firestore SDKs
@@ -44,7 +50,10 @@ function SignIn() {
   }
 
   return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <>
+    <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+    <p>You will be banned for swearing!</p>
+    </>
   )
 }
 
@@ -52,7 +61,7 @@ function SignIn() {
 function SignOut() {
   return auth.currentUser && (
 
-    <button onClick={() => auth.signOut}>Sign Out</button>
+    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
   )
 }
 
@@ -92,17 +101,20 @@ function ChatRoom() {
 
   return (
     <>
-      <div>
+    <main>
+      
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg}/>)}
-      </div>
+      
 
-      <div ref={fakeRef}></div>
+      <span ref={fakeRef}></span>
+
+      </main>
 
       <form onSubmit={sendMessage}>
        
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Type a message..." />
 
-        <button type="submit"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg></button>
+        <button type="submit" disabled={!formValue}><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg></button>
       </form>
     </>
   )
